@@ -34,7 +34,15 @@ public class Basics {
                 .when().put("maps/api/place/update/json")
                 .then().assertThat().statusCode(200).body("msg",equalTo("Address successfully updated"));
 
-        //get place
+        //delete place
+       /* given().log().all().queryParam("key","qaclick123")
+                .body("{\n" +
+                        "    \"place_id\":\""+placeId+"\"\n" +
+                        "}\n")
+                .when().delete("maps/api/place/delete/json")
+                .then().assertThat().log().all().statusCode(200);*/
+
+       //get place
         String getPlaceResponse= given().log().all().queryParam("key","qaclick123").queryParam("place_id",placeId)
                 .when().get("maps/api/place/get/json")
                 .then().assertThat().log().all().statusCode(200).extract().response().asString();
@@ -48,7 +56,6 @@ public class Basics {
         String actualAddress=js1.getString("address");
         System.out.println(actualAddress);
         Assert.assertEquals(actualAddress,"Pacific ocean");
-
 
     }
 }
