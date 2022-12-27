@@ -81,8 +81,9 @@ public class  Payload {
                 "\"isbn\":\""+isbn+"\",\n" +
                 "\"aisle\":\""+aisle+"\",\n" +
                 "\"author\":\"John foe\"\n" +
-                "}\n" +
-                " ";
+                "}\n"
+
+                ;
     }
 }
 
