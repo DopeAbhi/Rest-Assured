@@ -36,13 +36,13 @@ public class JiraApi {
       String commentId= js.getString("id");
 
         //Add Attachment
-     /*   given().header("X-Atlassian-Token","no-check").filter(session).pathParam("key","10001")
+       given().header("X-Atlassian-Token","no-check").filter(session).pathParam("key","10001")
                 .header("Content-Type","multipart/form-data")
                 .multiPart("file",new File("test.html")).when()
-                .post("/rest/api/2/issue/{key}/attachments").then().log().all().assertThat().statusCode(200);*/
+                .post("/rest/api/2/issue/{key}/attachments").then().log().all().assertThat().statusCode(200);
 
         //Get Issue
-     String tes=   given().filter(session).pathParam("key",10001).queryParam("fields","comment").when().get("/rest/api/2/issue/{key}").then()
+   /*  String tes=   given().filter(session).pathParam("key",10001).queryParam("fields","comment").when().get("/rest/api/2/issue/{key}").then()
                 .log().all().extract().response().asString();
         System.out.println(tes);
 
@@ -59,8 +59,8 @@ public class JiraApi {
             }
 
         }
+        */
         
-
 
     }
 
