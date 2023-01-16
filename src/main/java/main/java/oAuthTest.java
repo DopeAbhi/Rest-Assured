@@ -74,12 +74,12 @@ public class oAuthTest {
     }}
 
         //Get the course names of WebAutomation
-        //ArrayList<String> a= new ArrayList<String>();
+     /*   ArrayList<String> a= new ArrayList<String>();
 
 
-      /*  List<Pojo.WebAutomation> w=gc.getCourses().getWebAutomation();
+       List<Pojo.WebAutomation> w=gc.getCourses().getWebAutomation();
 
-        for(int j=0;j<w.size();j++)
+        for (int j=0;j<w.size();j++)
         {
             a.add(w.get(j).getCourseTitle());
         }
@@ -98,6 +98,8 @@ public class oAuthTest {
 
     }
 
+
 }
 
-       */
+      */
+       

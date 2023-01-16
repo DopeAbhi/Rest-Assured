@@ -1,3 +1,5 @@
+package files;
+
 import files.ReUsableMethods;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
