@@ -1,32 +1,15 @@
 package main.java;
 
-import java.util.List;
-
 public class GetOrderDetails {
+   private Data DataObject;
 
-    @Override
-    public String toString() {
-        return "GetOrderDetails{" +
-                "message='" + message + '\'' +
-                ", Data=" + Data +
-                '}';
+    public Data getDataObject() {
+        return DataObject;
     }
 
-    private String message;
-    private OrderData Data;
-
-
-    public OrderData getData() {
-        return Data;
+    public void setDataObject(Data dataObject) {
+        DataObject = dataObject;
     }
-
-    public void setData(OrderData data) {
-        Data = data;
-    }
-
-
-
-
 
     public String getMessage() {
         return message;
@@ -36,6 +19,10 @@ public class GetOrderDetails {
         this.message = message;
     }
 
+    private String message;
+
+
+// Getter Methods
 
 
 }

@@ -59,7 +59,7 @@ public class ECommerceAPITest {
 
 
 //Create Order
-
+        System.out.println(token);
         RequestSpecification CreateOrderBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
                 .addHeader("authorization", token).setContentType(ContentType.JSON).build();
 
@@ -74,27 +74,36 @@ public class ECommerceAPITest {
         Orders orders = new Orders();
         orders.setOrders(orderDetailsList);
 
-        RequestSpecification CreateOrderReq = given().spec(CreateOrderBaseReq).body(orders);
+
+        RequestSpecification CreateOrderReq = given().log().all().spec(CreateOrderBaseReq).body(orders);
         String res = CreateOrderReq.when().post("/api/ecom/order/create-order").then().log().all().extract().response().asString();
         System.out.println(res);
         JsonPath jsonPath = new JsonPath(res);
-        String orderId = jsonPath.getString("productOrderId");
+        String orderId = jsonPath.getString("orders");
         System.out.println(orderId);
 
 
 //Get Order Details
 
-/*
-        RequestSpecification GetOrderDetailsReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
-                .addHeader("authorization", token).build();
-     ResponseSpecification responseSpecification=new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
-        RequestSpecification requestSpecification = given().queryParam("id",orderId).spec(GetOrderDetailsReq);
+
+        RequestSpecification GetorderBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+                .addHeader("authorization", token).setContentType(ContentType.JSON).build();
+
+     ResponseSpecification responseSpecification=new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
+
+     RequestSpecification requestSpecification = given().log().all().spec(GetorderBaseReq).params("id",orderId);
                 GetOrderDetails getOrderDetails=requestSpecification.when().get("/api/ecom/order/get-orders-details")
-                .then().spec(responseSpecification).extract()
+                .then().spec(responseSpecification).assertThat().log().all().extract()
                         .response().as(GetOrderDetails.class);
-        System.out.println(getOrderDetails.toString());
-*/
+                String rest=getOrderDetails.getMessage();
+        System.out.println(rest);
+
+
+
+
+
+
 
 //Delete Product
 
