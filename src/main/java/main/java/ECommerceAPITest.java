@@ -83,7 +83,6 @@ public class ECommerceAPITest {
         RequestSpecification GetorderBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").
                 setUrlEncodingEnabled(false)
 
-
                 .addHeader("authorization", token).setContentType(ContentType.JSON).build();
 
      ResponseSpecification responseSpecification=new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
