@@ -1,24 +1,17 @@
 package main.java;
 
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+import org.testng.Assert;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Matcher;
-import org.testng.Assert;
-
-import static io.restassured.RestAssured.defaultParser;
 import static io.restassured.RestAssured.given;
 
 public class ECommerceAPITest {
@@ -48,7 +41,7 @@ public class ECommerceAPITest {
                 param("productPrice", "20000").
                 param("productDescription", "ashayshirtsoriginal").
                 param("productFor", "men").
-                multiPart("productImage", new File("/home/abhay/Downloads/Test Data/ackn.png"));
+                multiPart("productImage", new File("/Users/abhayverma/IdeaProjects/Rest-Assured/src/main/java/main/java/download.jpeg"));
         String addProductResponse = reqAddProduct.when().post("api/ecom/product/add-product")
                 .then().extract().response().asString();
 
@@ -79,25 +72,30 @@ public class ECommerceAPITest {
         String res = CreateOrderReq.when().post("/api/ecom/order/create-order").then().log().all().extract().response().asString();
         System.out.println(res);
         JsonPath jsonPath = new JsonPath(res);
-        String orderId = jsonPath.getString("orders");
+        String order = jsonPath.getString("orders");
+        String orderId=order.substring(1,25);
         System.out.println(orderId);
 
 
 //Get Order Details
 
 
+        RequestSpecification GetorderBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").
+                setUrlEncodingEnabled(false)
 
-        RequestSpecification GetorderBaseReq = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+
                 .addHeader("authorization", token).setContentType(ContentType.JSON).build();
 
      ResponseSpecification responseSpecification=new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
 
-     RequestSpecification requestSpecification = given().log().all().spec(GetorderBaseReq).params("id",orderId);
+     RequestSpecification requestSpecification = given().log().all().queryParam("id",orderId).
+             spec(GetorderBaseReq);
                 GetOrderDetails getOrderDetails=requestSpecification.when().get("/api/ecom/order/get-orders-details")
                 .then().spec(responseSpecification).assertThat().log().all().extract()
                         .response().as(GetOrderDetails.class);
-                String rest=getOrderDetails.getMessage();
-        System.out.println(rest);
+
+        System.out.println(getOrderDetails.getData().getOrderById());
+
 
 
 

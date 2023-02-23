@@ -1,15 +1,17 @@
 package main.java;
 
 public class GetOrderDetails {
-   private Data DataObject;
-
-    public Data getDataObject() {
-        return DataObject;
+    public Data getData() {
+        return Data;
     }
 
-    public void setDataObject(Data dataObject) {
-        DataObject = dataObject;
+    public void setData(main.java.Data data) {
+        Data = data;
     }
+
+    private Data Data;
+
+
 
     public String getMessage() {
         return message;

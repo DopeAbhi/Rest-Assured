@@ -1,23 +1,17 @@
 package main.java;
 
-import static io.restassured.RestAssured.given;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import Pojo.Api;
 import Pojo.GetCourses;
+import io.restassured.parsing.Parser;
+import io.restassured.path.json.JsonPath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 
-import io.restassured.parsing.Parser;
-import io.restassured.path.json.JsonPath;
+import java.util.List;
 
-import javax.swing.*;
+import static io.restassured.RestAssured.given;
 
 public class oAuthTest {
 

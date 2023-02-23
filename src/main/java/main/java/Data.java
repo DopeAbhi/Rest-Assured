@@ -10,7 +10,7 @@ public class Data {
     private String productDescription;
     private String productImage;
     private String orderPrice;
-    private float __v;
+    private int __v;
 
 
     // Getter Methods
@@ -93,7 +93,7 @@ public class Data {
         this.orderPrice = orderPrice;
     }
 
-    public void set__v(float __v) {
+    public void set__v(int __v) {
         this.__v = __v;
     }
 }

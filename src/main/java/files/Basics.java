@@ -1,16 +1,15 @@
 package files;
 
-import files.ReUsableMethods;
 import io.restassured.RestAssured;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import files.Payload;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 
 public class Basics {

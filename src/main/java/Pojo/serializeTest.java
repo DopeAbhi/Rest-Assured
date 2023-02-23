@@ -1,6 +1,7 @@
 package Pojo;
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,10 @@ public class serializeTest {
         String res = given().queryParam("key", "qaclick123").log().all().body(p)
                 .when().post("/maps/api/place/add/json")
                 .then().assertThat().statusCode(200).extract().response().asString();
+        JsonPath jsonPath=new JsonPath(res);
+        String res2= jsonPath.getString("id");
 
-        System.out.println(res);
+        System.out.println(res2);
     }
 }
 

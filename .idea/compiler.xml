@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="DemoProject" target="14" />
+      <module name="Rest-Assured" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
