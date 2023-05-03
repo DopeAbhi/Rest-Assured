@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -20,7 +21,10 @@ public class oAuthTest {
 
         String[] courseTitles = {"Selenium Webdriver Java", "Cypress", "Protractor"};
         System.setProperty("webdriver.chrome.driver", "/home/abhay/Downloads/chromedriver");
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        ChromeDriver driver = new ChromeDriver(options);
+
         driver.get("https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email\n" +
                 "&auth_url=https://accounts.google.com/o/oauth2/v2/auth&client_id=692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com\n" +
                 "&response_type=code&redirect_uri=https://rahulshettyacademy.com/getCourse.php&state=verify");
