@@ -2,14 +2,17 @@ package main.java;
 
 import Pojo.Api;
 import Pojo.GetCourses;
+import Pojo.WebAutomation;
 import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -35,6 +38,7 @@ public class oAuthTest {
         driver.findElement(By.cssSelector("input[type='password']")).sendKeys(Keys.ENTER);
         Thread.sleep(4000);
         String url = driver.getCurrentUrl();
+        System.out.println(url);
         String partialcode = url.split("code=")[1];
         String code = partialcode.split("&scope")[0];
         System.out.println(code);
@@ -69,17 +73,17 @@ public class oAuthTest {
                 System.out.println(apiCourses.get(i).getPrice());
             }
         }
-    }}
+
 
         //Get the course names of WebAutomation
-     /*   ArrayList<String> a= new ArrayList<String>();
+        ArrayList<String> a= new ArrayList<String>();
 
 
-       List<Pojo.WebAutomation> w=gc.getCourses().getWebAutomation();
+       List<WebAutomation> w=gc.getCourses().getWebAutomation();
 
         for (int j=0;j<w.size();j++)
         {
-            a.add(w.get(j).getCourseTitle());
+            System.out.println((w.get(j).getCourseTitle()));
         }
 
         List<String> expectedList=	Arrays.asList(courseTitles);
@@ -94,10 +98,7 @@ public class oAuthTest {
         //System.out.println(response);
 
 
-    }
+    }}
 
 
-}
-
-      */
        
